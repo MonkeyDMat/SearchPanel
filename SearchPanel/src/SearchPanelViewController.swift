@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SearchPanelDelegate: class {
+public protocol SearchPanelDelegate: class {
     
     func containerHeightConstraint() -> NSLayoutConstraint
     func closedOffset() -> Float
@@ -16,17 +16,17 @@ protocol SearchPanelDelegate: class {
     func openOffset() -> Float
 }
 
-protocol SearchPanelListDelegate: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+public protocol SearchPanelListDelegate: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     func findAroundMe()
 }
 
-enum SearchPanelState {
+public enum SearchPanelState {
     case closed
     case partial
     case opened
 }
 
-class SearchPanelViewController: UIViewController {
+public class SearchPanelViewController: UIViewController {
     
     // Menu Const
     private let VELOCITY_ATTENUATION = CGFloat(10)
@@ -38,12 +38,12 @@ class SearchPanelViewController: UIViewController {
     @IBOutlet weak private var handler: UIView!
     
     // Delegates
-    weak var delegate: SearchPanelDelegate? {
+    public weak var delegate: SearchPanelDelegate? {
         didSet {
             openMenu(state: currentState, animated: false)
         }
     }
-    weak var listDelegate: SearchPanelListDelegate? {
+    public weak var listDelegate: SearchPanelListDelegate? {
         didSet {
             tableView.dataSource = listDelegate
             tableView.delegate = listDelegate
@@ -58,7 +58,7 @@ class SearchPanelViewController: UIViewController {
     private var heightAtGestureStart: CGFloat = CGFloat(0)
     var isContainerFullyOpened: Bool = true
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         // Pan Gesture
@@ -87,43 +87,43 @@ class SearchPanelViewController: UIViewController {
     }
     
     //MARK: - Table View Wrapper
-    func register(nib: UINib?, forCellReuseIdentifier identifier: String) {
+    public func register(nib: UINib?, forCellReuseIdentifier identifier: String) {
         
         tableView.register(nib, forCellReuseIdentifier: identifier)
     }
     
-    func register(cellClass: Swift.AnyClass?, forCellReuseIdentifier identifier: String) {
+    public func register(cellClass: Swift.AnyClass?, forCellReuseIdentifier identifier: String) {
         
         tableView.register(cellClass, forCellReuseIdentifier: identifier)
     }
     
-    func register(nib: UINib?, forHeaderFooterViewReuseIdentifier identifier: String) {
+    public func register(nib: UINib?, forHeaderFooterViewReuseIdentifier identifier: String) {
         
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: identifier)
     }
     
-    func register(aClass: Swift.AnyClass?, forHeaderFooterViewReuseIdentifier identifier: String) {
+    public func register(aClass: Swift.AnyClass?, forHeaderFooterViewReuseIdentifier identifier: String) {
         
         tableView.register(aClass, forHeaderFooterViewReuseIdentifier: identifier)
     }
     
-    func refreshList() {
+    public func refreshList() {
         
         tableView.reloadData()
     }
     
     //MARK: - SearchBar Wrapper
-    func setSearchBarPlaceholder(placeholder: String) {
+    public func setSearchBarPlaceholder(placeholder: String) {
         
         searchBar.placeholder = placeholder
     }
     
-    func searchBarEndedEditing() {
+    public func searchBarEndedEditing() {
         
         searchBar.endEditing(true)
     }
     
-    func setSearchBarText(text: String?) {
+    public func setSearchBarText(text: String?) {
         
         searchBar.text = text
     }
@@ -156,7 +156,7 @@ class SearchPanelViewController: UIViewController {
     }
     
     // Methods that enables or disable table views scroll
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if !isContainerFullyOpened {
             tableView.contentOffset = CGPoint.zero
@@ -170,7 +170,7 @@ class SearchPanelViewController: UIViewController {
     }
     
     // MARK: - Public Methods
-    func setState(state: SearchPanelState, animated: Bool = true) {
+    public func setState(state: SearchPanelState, animated: Bool = true) {
         openMenu(state: state, animated: animated, velocity: 1)
     }
     
@@ -294,7 +294,7 @@ class SearchPanelViewController: UIViewController {
 
 extension SearchPanelViewController: UIGestureRecognizerDelegate {
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         
         return true
     }
