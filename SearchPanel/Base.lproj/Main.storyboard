@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Panel Demo View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="SearchPanelDemoViewController" customModule="SearchPanel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="uX7-5Y-TkM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NoO-fI-Qjh">
+                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="tud-RN-m8D"/>
+                                </constraints>
+                                <attributedString key="userComments">
+                                    <fragment content="The size of this view doesn't matter, the final sizes of the states closed, partial and opened are defined by the delegate">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="smallSystem"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <connections>
+                                    <segue destination="tEe-3T-mFa" kind="embed" id="hje-vx-msg"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NoO-fI-Qjh" secondAttribute="bottom" id="61e-qo-6lt"/>
+                            <constraint firstItem="NoO-fI-Qjh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BhL-mZ-aAi"/>
+                            <constraint firstItem="uX7-5Y-TkM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Caf-zO-Q8x"/>
+                            <constraint firstAttribute="trailing" secondItem="NoO-fI-Qjh" secondAttribute="trailing" id="Mcy-yF-b5n"/>
+                            <constraint firstItem="uX7-5Y-TkM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XYM-hO-Q8l"/>
+                            <constraint firstAttribute="trailing" secondItem="uX7-5Y-TkM" secondAttribute="trailing" id="cKr-na-Gxy"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uX7-5Y-TkM" secondAttribute="bottom" id="w2V-X9-wEp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="seacrhPanelHeightConstraint" destination="tud-RN-m8D" id="UGn-ei-p9n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="123.68815592203899"/>
+        </scene>
+        <!--SearchPanelViewController-->
+        <scene sceneID="z1n-rO-tRs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SearchPanelView" referencedIdentifier="SearchPanelViewController" id="tEe-3T-mFa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g9y-Ec-qRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="831" y="209"/>
+        </scene>
+    </scenes>
+</document>
